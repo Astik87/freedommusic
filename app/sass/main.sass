@@ -1,0 +1,182 @@
+*
+	margin: 0
+	padding: 0
+
+body
+	font-size: 16px
+	color: #fff
+	height: 100vh
+
+img
+	display: block
+
+a
+	text-decoration: none
+	color: #fff
+
+li
+	list-style: none
+
+/* Input */
+
+.group
+	margin: 0 1.5em
+	width: 100%
+	display: flex
+	align-items: center
+	position: relative
+	& input
+		font-size: 1em
+		width: 100%
+		background-color: inherit
+		border: none
+		border-bottom: solid 1px #fff
+		outline: none
+		padding-left: .75em
+		padding-bottom: 0.25em
+		color: #fff
+		z-index: 2
+
+		&:focus ~ label
+			font-size: .75em
+			top: -1.5em
+			color: #000
+
+		&:focus ~ span
+			left: 0
+			width: 100%
+			transition: 0.2s all
+
+	& label
+		font-size: 1em
+		position: absolute
+		top: 0
+		left: .75em
+		transition: .2s all
+
+	& span
+		position: absolute
+		background-color: #000
+		width: 0
+		height: 1px
+		left: 50%
+		bottom: 0
+
+
+
+
+/* Header */
+.header
+	display: flex
+	background-color: #0a0a0a
+	height: 90px
+
+.logo
+	display: flex
+	justify-content: center
+	align-items: center
+	text-transform: uppercase
+	font-weight: 700
+	font-size: 1.5em
+	width: 16.5%
+
+	& span
+		color: red
+
+.header__main
+	width: 67%
+	display: flex
+	justify-content: space-between
+
+	& .profile
+		display: flex
+		align-items: center
+
+		& img
+			margin-right: 0.875em
+
+		& span
+			text-transform: uppercase
+
+	& .search
+		display: flex
+		justify-content: space-between
+		align-items: center
+		background-color: #f23005
+		width: 30%
+
+		& .group
+			width: 70%
+
+		& button
+			display: block
+			font-size: 1.125em
+			background-color: inherit
+			border: 2px solid #fff
+			border-radius: 50%
+			width: 40px
+			height: 40px
+			margin-right: 1.5em
+			& i
+				color: #fff
+				font-size: .9em
+
+.main
+	display: flex
+	height: 82%
+
+main.musics
+	width: 67%
+
+.sidebar
+	width: 16.5%
+	background-color: #151515
+	display: flex
+	justify-content: center
+	overflow: scroll
+
+	&::-webkit-scrollbar
+		width: 0
+		height: 0
+
+.menu
+	padding-top: 1em
+	& li
+		margin-top: .875em
+
+		& a
+			display: block
+			padding: 1em
+			text-transform: uppercase
+			transition: .2s all
+
+			& i
+				color: #f23050
+				margin-right: 1em
+
+		& a:hover
+			color: #f23050
+
+.playlists
+	padding-top: 2.875em
+
+	& h1
+		font-size: 1.5em
+		text-transform: uppercase
+
+		& i
+			color: #f23050
+			font-size: .8em
+			margin-right: .83em
+
+	& ul
+		width: 100%
+		padding-left: 2em
+		padding-top: .75em
+
+		& li a
+			display: block
+			padding: .75em 1em 
+			transition: .2s all
+		& li a:hover
+			color: #f23050
