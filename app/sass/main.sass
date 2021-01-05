@@ -15,10 +15,50 @@ a
 	color: #fff
 
 li
-	list-style: none
+	list-style: none  
+
+input[type=range]::-moz-range-thumb
+  	height: 0px
+  	width: 0px
+  	cursor: pointer
+  	border: 0
+
+/* Range */
+.range
+	position: relative
+	background-color: #292929
+	border-radius: 10px
+	overflow: hidden
+	z-index: 1
+	& input
+		position: absolute
+		top: 0
+		left: 0
+		border-radius: 14px
+		-webkit-appearance: none
+		background-color: initial
+		outline: none
+		z-index: 3
+
+		&::-webkit-slider-runnable-track
+			height: 10px
+			-webkit-appearance: none
+
+		&::-webkit-slider-thumb
+			width: 0
+			height: 0
+			-webkit-appearance: none
+	& span
+		position: absolute
+		top: 0
+		left: 0
+		width: 50%
+		height: 100%
+		background-color: red
+		border-radius: 10px
+		z-index: 2
 
 /* Input */
-
 .group
 	margin: 0 1.5em
 	width: 100%
@@ -69,7 +109,7 @@ li
 .header
 	display: flex
 	background-color: #0a0a0a
-	height: 90px
+	height: 9%
 
 .logo
 	display: flex
@@ -92,8 +132,15 @@ li
 		display: flex
 		align-items: center
 
-		& img
+		& .ava
+			height: 100%
+			max-width: 90px
+			overflow: hidden
 			margin-right: 0.875em
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
 
 		& span
 			text-transform: uppercase
@@ -121,13 +168,76 @@ li
 				color: #fff
 				font-size: .9em
 
+/* Main */
 .main
 	display: flex
-	height: 82%
+	height: 80%
 
-main.musics
+.music
 	width: 67%
+	padding: 1.5% 0
+	background-color: #151515
+	display: grid
+	grid-template-columns: 1fr 1fr 1fr 1fr
+	grid-column-gap: 1em
+	overflow-y: scroll
+	overflow-x: hidden
 
+	&::-webkit-scrollbar
+		width: 0
+		height: 0
+
+	&-item
+		width: 16vw
+		height: 16vw
+		margin-bottom: 1em
+		display: flex
+		justify-content: center
+		align-items: center
+		overflow: hidden
+		position: relative
+
+		& img
+			width: 100%
+			height: 100%
+			object-fit: cover
+
+		& .hover
+			opacity: 0
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			display: flex
+			justify-content: center
+			align-items: center
+			background-color: rgba(0,0,0,0.7)
+			transition: 0.2s all
+
+			& .name
+				text-transform: uppercase
+				position: absolute
+				top: 7%
+				left: 7%
+
+			& .author
+				position: absolute
+				top: 15%
+				left: 7%
+
+			& .play
+				font-size: 3.5em
+				transition: .2s all
+
+				&:hover
+					color: #f23050
+
+		&:hover .hover
+			opacity: 1
+
+
+/* Sidebar */
 .sidebar
 	width: 16.5%
 	background-color: #151515
@@ -138,6 +248,7 @@ main.musics
 	&::-webkit-scrollbar
 		width: 0
 		height: 0
+
 
 .menu
 	padding-top: 1em
@@ -180,3 +291,103 @@ main.musics
 			transition: .2s all
 		& li a:hover
 			color: #f23050
+
+/* Player */
+.player
+	height: 11%
+	background-color: #0a0a0a
+	display: flex
+
+	& .track
+		width: 16.5%
+		height: 100%
+		display: flex
+		align-items: center
+
+		& div.track-img
+			margin-left: 2.5em
+			border-radius: 50%
+			overflow: hidden
+			text-align: center
+			position: relative
+			padding: 12%
+
+			& img
+				height: 100%
+				width: 100%
+				object-fit: cover
+				position: absolute
+				top: 0
+				left: 0
+
+		&__name
+			display: flex
+			flex-direction: column
+			margin-left: 1.5em
+
+			& .name
+				text-transform: uppercase
+
+			& .author
+				color: #b3b3b3
+
+	& .controls
+		width: 67%
+		height: 100%
+		display: flex
+		align-items: center
+
+		& i
+			color: #fff
+			font-size: 1.5em
+			margin-right: 1%
+			transition: .2s all
+
+			&:hover
+				color: #f23050
+
+		& #pause
+			font-size: 2em
+			margin-right: .5625em
+
+		& #repeat
+			margin-right: 3%
+			position: relative
+			& span
+				width: 1em
+				height: 1em
+				border-radius: 50%
+				line-height: 0.9em
+				text-align: center
+				position: absolute
+				top: -0.5em
+				right: -0.5em
+				font-size: 0.5em
+				background-color: red
+				display: none
+				color: #fff
+
+		& .time
+			margin: 0 2%
+
+		& .timeline
+			width: 70%
+			height: 10px
+
+			& input
+				width: 100%
+
+	& .volume
+		width: 16.5%
+		height: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+
+		& i
+			font-size: 1.5em
+			margin-right: 5%
+
+		& .range
+			width: 46%
+			height: 10px
