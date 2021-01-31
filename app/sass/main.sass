@@ -3,9 +3,11 @@
 	padding: 0
 
 body
-	font-size: 16px
+	font-size: 14px
 	color: #fff
-	height: 100vh
+	height: calc(var(--vh, 1vh) * 100)
+	overflow: hidden
+	background-color: #151515
 
 img
 	display: block
@@ -60,7 +62,6 @@ input[type=range]::-moz-range-thumb
 
 /* Input */
 .group
-	margin: 0 1.5em
 	width: 100%
 	display: flex
 	align-items: center
@@ -101,15 +102,13 @@ input[type=range]::-moz-range-thumb
 		height: 1px
 		left: 50%
 		bottom: 0
-
-
-
+		z-index: 2
 
 /* Header */
 .header
 	display: flex
 	background-color: #0a0a0a
-	height: 9%
+	height: 75px
 
 .logo
 	display: flex
@@ -127,6 +126,36 @@ input[type=range]::-moz-range-thumb
 	width: 67%
 	display: flex
 	justify-content: space-between
+
+	& .d-menu
+		height: 100%
+		width: 90px
+		display: none
+		justify-content: center
+		flex-direction: column
+		align-items: center
+		z-index: 3
+
+		& span
+			display: block
+			width: 30px
+			height: 2px
+			margin: 3px 0
+			background-color: #fff
+			transition: .2s all
+
+	& .active span
+			&:nth-child(1)
+				transform: rotate(45deg)
+				margin: -1px 0
+
+			&:nth-child(2)
+				display: none
+
+			&:nth-child(3)
+				transform: rotate(-45deg)
+				margin: -1px 0
+
 
 	& .profile
 		display: flex
@@ -148,12 +177,14 @@ input[type=range]::-moz-range-thumb
 	& .search
 		display: flex
 		justify-content: space-between
-		align-items: center
+		align-items: flex-end
 		background-color: #f23005
 		width: 30%
 
 		& .group
 			width: 70%
+			margin-left: 6%
+			margin-bottom: 6%
 
 		& button
 			display: block
@@ -161,9 +192,10 @@ input[type=range]::-moz-range-thumb
 			background-color: inherit
 			border: 2px solid #fff
 			border-radius: 50%
-			width: 40px
-			height: 40px
-			margin-right: 1.5em
+			width: 2.22em
+			height: 2.22em
+			margin-right: 6%
+			margin-bottom: 6%
 			& i
 				color: #fff
 				font-size: .9em
@@ -171,14 +203,17 @@ input[type=range]::-moz-range-thumb
 /* Main */
 .main
 	display: flex
-	height: 80%
+	height: calc(89vh - 75px)
+	background-color: #151515
 
 .music
 	width: 67%
-	padding: 1.5% 0
+	height: fit-content
+	max-height: 100%
+	padding: 0
 	background-color: #151515
 	display: grid
-	grid-template-columns: 1fr 1fr 1fr 1fr
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr
 	grid-column-gap: 1em
 	overflow-y: scroll
 	overflow-x: hidden
@@ -188,9 +223,9 @@ input[type=range]::-moz-range-thumb
 		height: 0
 
 	&-item
-		width: 16vw
-		height: 16vw
-		margin-bottom: 1em
+		width: 12.7vw
+		height: 12.7vw
+		margin-top: 1em
 		display: flex
 		justify-content: center
 		align-items: center
@@ -221,10 +256,16 @@ input[type=range]::-moz-range-thumb
 				top: 7%
 				left: 7%
 
+				&:hover
+					color: #f23050
+
 			& .author
 				position: absolute
 				top: 15%
 				left: 7%
+
+				&:hover
+					color: #f23050
 
 			& .play
 				font-size: 3.5em
@@ -244,11 +285,14 @@ input[type=range]::-moz-range-thumb
 	display: flex
 	justify-content: center
 	overflow: scroll
+	z-index: 2
 
 	&::-webkit-scrollbar
 		width: 0
 		height: 0
 
+li.playlists
+	display: none
 
 .menu
 	padding-top: 1em
@@ -294,7 +338,7 @@ input[type=range]::-moz-range-thumb
 
 /* Player */
 .player
-	height: 11%
+	height: 11vh
 	background-color: #0a0a0a
 	display: flex
 
@@ -391,3 +435,235 @@ input[type=range]::-moz-range-thumb
 		& .range
 			width: 46%
 			height: 10px
+
+@media screen and (max-width: 1450px)
+	.header__main
+		& .search
+			font-size: 12px
+
+			& .group
+				margin-bottom: 8%
+
+			& button
+				margin-bottom: 8%
+
+	.music
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		padding-left: 1%
+
+		&-item
+			width: 15.5vw
+			height: 15.5vw
+
+@media screen and (max-width: 1220px)
+	body
+		font-size: 12px
+
+	.header__main
+		& .search
+			width: 40%
+
+			& .group
+				margin-bottom: 8%
+
+			& button
+				margin-bottom: 8%
+
+@media screen and (max-width: 1000px)
+
+	.main
+		height: calc(100% - 120px)
+
+	.player
+		position: absolute
+		left: 0
+		bottom: 0
+		height: 60px
+		width: 100%
+
+	.header
+		height: 60px
+		&__main .d-menu
+			display: flex
+
+	.playlists
+	 	display: none
+
+	.music
+		width: 95%
+		max-height: 100%
+		margin: 0 auto
+		grid-template-columns: 1fr 1fr 1fr 1fr
+
+		&-item
+			width: 23vw
+			height: 23vw
+
+	.logo
+		display: none
+
+	.header__main
+		width: 100%
+
+		& .profile
+			display: none
+
+		& .search
+			width: 300px
+
+			& button
+				margin-bottom: 6%
+
+			& .group
+				margin-bottom: 6%
+
+
+	.sidebar--left
+		position: absolute
+		width: 0
+		top: 0
+		left: 0
+		height: 100%
+		font-size: 1.2em
+		justify-content: center
+		flex-wrap: wrap
+		overflow-x: hidden
+		transition: 0.2s all
+
+		& .menu
+			margin-top: 6vh
+			margin-left: 0
+			display: inline
+		&.show
+			width: 35%
+
+		& .playlists
+			display: block
+
+	.player
+		justify-content: center
+		& .track
+			display: none
+
+		.volume
+			width: 19%
+
+			& .range
+				width: 60%
+
+		& .controls
+			width: 79%
+
+
+@media screen and (max-width: 740px)
+	.music
+		grid-template-columns: 1fr 1fr 1fr
+
+		&-item
+			width: 30vw
+			height: 30vw
+
+	.sidebar--left.show 
+		width: 40%
+
+@media screen and (max-width: 540px)
+	.music
+		grid-template-columns: 1fr 1fr
+
+		&-item
+			width: 45vw
+			height: 45vw
+
+	.sidebar--left.show 
+		width: 60%
+
+
+@media screen and (max-width: 420px)
+	body
+		font-size: 14px
+
+	.sidebar--left
+		font-size: 1em
+		display: flex
+		justify-content: center
+		&.show
+			width: 100%
+
+	.header
+		height: 60px
+
+		& .d-menu
+			width: 55px
+			height: 100%
+
+		&__main
+			& .search
+				width: 75%
+				font-size: 11px
+
+			& .profile .ava
+				width: 60px
+				height: 60px
+
+	.logo
+		display: none
+
+	.music
+		width: 100%
+		display: block
+
+		&-item
+			display: block
+			width: 95vw
+			height: 25vw
+			margin: 0.5em auto
+			position: relative
+
+			& .hover
+				display: block
+				opacity: 1
+				background-color: inherit
+				& .name
+					display: block
+					position: absolute
+					left: 30vw
+					top: 2vw
+
+				& .author
+					position: absolute
+					left: 30vw
+					top: 7vw
+					color: rgba(255,255,255, 0.6)
+
+				& .play
+					opacity: 0
+					position: absolute
+					font-size: 2em
+					line-height: 25vw
+					width: 25vw
+					text-align: center
+
+		& img
+			width: 25vw
+			height: 100%
+
+	.main
+		height: calc(100% - 120px)
+
+	.player
+		position: absolute
+		left: 0
+		bottom: 0
+		height: 60px
+		display: flex
+		justify-content: center
+
+		& .controls
+			width: 95vw
+			font-size: 12px
+
+		& .track
+			display: none
+
+		& .volume
+			display: none
