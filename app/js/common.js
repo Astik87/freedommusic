@@ -28,17 +28,45 @@ range.forEach((e) => {
 /* Play */
 
 let repeat = document.getElementById("repeat");
-
 repeat.addEventListener("click", (e) => {
+	let color = e.target.style.color;
 	let display = e.target.firstChild.style.display;
-	if(display == "none") e.target.firstChild.style.display = "block"
-	else  e.target.firstChild.style.display = "none";
+
+	if((color == "" || color == "rgb(255, 255, 255)") && (display == "none" || display == "")) e.target.style.color = "#f23050"
+	else if ((display == "none" || display == "") && color == "rgb(242, 48, 80)")  e.target.firstChild.style.display = "block"
+	else {e.target.style.color = "#fff"; e.target.firstChild.style.display = "none" }
+
+});
+
+let pause = document.getElementById("pause");
+let play = document.getElementById("play");
+
+play.addEventListener("click", (e) => {
+	e.target.style.opacity = "0";
+	e.target.style.zIndex = '0';
+	pause.style.opacity = '1';
+	pause.style.zIndex = '1';
+});
+
+pause.addEventListener("click", (e) => {
+	e.target.style.opacity = "0";
+	e.target.style.zIndex = '0';
+	play.style.opacity = '1';
+	play.style.zIndex = '1';
+});
+
+let random = document.getElementById("random");
+
+random.addEventListener("click", (e) => {
+	let color = e.target.style.color;
+	if (color == "rgb(255, 255, 255)" || color == "") e.target.style.color = "#f23050"
+	else e.target.style.color = "#fff";
 });
 
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-window.addEventListener(`resize`, event => {
+window.addEventListener("resize", event => {
 	vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 }, false);

@@ -455,19 +455,26 @@ li.playlists {
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    position: relative; }
     .player .controls i {
       color: #fff;
       font-size: 1.5em;
       margin-right: 1%;
-      -webkit-transition: .2s all;
-      -o-transition: .2s all;
-      transition: .2s all; }
+      -webkit-transition: .2s color;
+      -o-transition: .2s color;
+      transition: .2s color; }
       .player .controls i:hover {
         color: #f23050; }
+    .player .controls #pause, .player .controls #play {
+      font-size: 1em;
+      position: absolute;
+      z-index: 1;
+      -webkit-transition: .5s opacity, z-index;
+      -o-transition: .5s opacity, z-index;
+      transition: .5s opacity, z-index; }
     .player .controls #pause {
-      font-size: 2em;
-      margin-right: .5625em; }
+      opacity: 0; }
     .player .controls #repeat {
       margin-right: 3%;
       position: relative; }
@@ -512,6 +519,10 @@ li.playlists {
     .player .volume .range {
       width: 46%;
       height: 10px; }
+
+@media screen and (max-width: 1024px) {
+  .player i:hover, .music-item i:hover, .music-item a:hover {
+    color: #fff !important; } }
 
 @media screen and (max-width: 1450px) {
   .header__main .search {

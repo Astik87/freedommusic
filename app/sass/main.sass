@@ -380,19 +380,25 @@ li.playlists
 		height: 100%
 		display: flex
 		align-items: center
+		position: relative
 
 		& i
 			color: #fff
 			font-size: 1.5em
 			margin-right: 1%
-			transition: .2s all
+			transition: .2s color
 
 			&:hover
 				color: #f23050
 
+		& #pause, & #play
+			font-size: 1em
+			position: absolute
+			z-index: 1
+			transition: .5s opacity, z-index
+
 		& #pause
-			font-size: 2em
-			margin-right: .5625em
+			opacity: 0
 
 		& #repeat
 			margin-right: 3%
@@ -436,7 +442,12 @@ li.playlists
 			width: 46%
 			height: 10px
 
+@media screen and (max-width: 1024px)
+	.player i:hover, .music-item i:hover, .music-item a:hover
+		color: #fff!important
+
 @media screen and (max-width: 1450px)
+
 	.header__main
 		& .search
 			font-size: 12px

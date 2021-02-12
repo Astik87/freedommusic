@@ -58,7 +58,7 @@ gulp.task('watch', function() {
     gulp.watch('app/*.html').on('change', browserSync.reload);
 });
 
-gulp.task('build', function() {
+gulp.task('build', function( done ) {
     let buildCss = gulp.src([
         'app/css/main.css',
         'app/css/libs.min.css'
@@ -73,6 +73,9 @@ gulp.task('build', function() {
 
     let buildHTML = gulp.src('app/*.html')
     .pipe(gulp.dest('dist'));
+
+    done();
+
 });
 
 gulp.task('start', gulp.parallel('sass', 'css-libs', 'watch','browser-sync'));
