@@ -1,13 +1,17 @@
-let gulp         = require('gulp'),
-    sass         = require('gulp-sass'),
-    browserSync  = require('browser-sync'),
-    concat       = require('gulp-concat'),
-    uglifyjs     = require('gulp-uglifyjs'),
-    cssnano      = require('gulp-cssnano'),
-    rename       = require('gulp-rename'),
-    imagemin     = require('gulp-imagemin'),
-    pngquant     = require('imagemin-pngquant'),
-    autoprefixer = require('gulp-autoprefixer');
+let gulp          = require('gulp'),
+    sass          = require('gulp-sass'),
+    browserSync   = require('browser-sync'),
+    concat        = require('gulp-concat'),
+    uglifyjs      = require('gulp-uglifyjs'),
+    cssnano       = require('gulp-cssnano'),
+    rename        = require('gulp-rename'),
+    imagemin      = require('gulp-imagemin'),
+    pngquant      = require('imagemin-pngquant'),
+    autoprefixer  = require('gulp-autoprefixer'),
+    babel         = require('gulp-babel'),
+    webpack       = require('webpack'),
+    webpackStream = require('webpack-stream'),
+    webpackConfig = require('./webpack.config.js');
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/**/*.sass')
@@ -23,16 +27,23 @@ gulp.task('browser-sync', function() {
    });
 });
 
-/*gulp.task('scripts', function() {
+gulp.task('scripts', function() {
     return gulp.src([
         'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/jquery-knob/dist/jquery.knob.min.js',
-        'app/libs/bootstrap/dist/js/bootstrap.min.js'
+        //'app/libs/jquery-knob/dist/jquery.knob.min.js',
+        //'app/libs/bootstrap/dist/js/bootstrap.min.js'
     ])
     .pipe(concat('libs.min.js'))
     .pipe(uglifyjs())
     .pipe(gulp.dest('app/js'));
-});*/
+});
+
+gulp.task('js', function() {
+    return gulp.src('app/js/src/App.js')
+    .pipe(webpackStream(webpackConfig), webpack)
+    .pipe(gulp.dest('app/js/'))
+    .pipe(browserSync.reload({stream: true}));
+});
 
 gulp.task('css-libs', function() {
     return gulp.src('app/css/libs.css')
@@ -54,7 +65,7 @@ gulp.task('img', function() {
 
 gulp.task('watch', function() {
     gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
-    gulp.watch('app/js/**/*.js', browserSync.reload);
+    gulp.watch('app/js/src/**/*.js', gulp.parallel('js'));
     gulp.watch('app/*.html').on('change', browserSync.reload);
 });
 
@@ -78,4 +89,4 @@ gulp.task('build', function( done ) {
 
 });
 
-gulp.task('start', gulp.parallel('sass', 'css-libs', 'watch','browser-sync'));
+gulp.task('start', gulp.parallel('sass', 'css-libs', 'scripts', 'js', 'watch','browser-sync'));
