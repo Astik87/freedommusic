@@ -6,6 +6,7 @@ export class User {
   name = null;
   surname = null;
   email = null;
+  ava = "./img/ava.jpg"
 
   static getUser() {
     if (User.user == null) {

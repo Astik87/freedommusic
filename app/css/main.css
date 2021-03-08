@@ -206,6 +206,14 @@ input[type=range]::-moz-range-thumb {
         height: 100%;
         -o-object-fit: cover;
            object-fit: cover; }
+    .header__main .profile a {
+      text-transform: uppercase;
+      margin-left: 1em;
+      -webkit-transition: .2s color;
+      -o-transition: .2s color;
+      transition: .2s color; }
+      .header__main .profile a:hover {
+        color: #f23050; }
     .header__main .profile span {
       text-transform: uppercase; }
   .header__main .search {
