@@ -3,7 +3,7 @@ export class Playlist {
   id = null;
   userId = null;
   name = null;
-  musics = null;
+  musics = [];
 
   static getPlaylistById(id) {}
   static getPlaylistByGenreId(genre) {}

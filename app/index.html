@@ -41,7 +41,7 @@
 
 	<main class="main">
 		<div class="sidebar sidebar--left">
-			<ul class="menu">
+			<ul id="sidebar" class="menu">
 				<li><a href="#"><i class="fas fa-headphones-alt"></i>top songs</a></li>
 				<li><a href="#"><i class="fas fa-headphones-alt"></i>recomended</a></li>
 				<li><a href="#"><i class="fas fa-headphones-alt"></i>most heard</a></li>
@@ -61,70 +61,9 @@
 				</ul>
 		</div>
 
-		<main class="music">
-			<div class="music-item">
-				<img src="img/music_img_1.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_2.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_3.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_4.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_5.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_6.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_7.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
-			</div>
-			<div class="music-item">
-				<img src="img/music_img_8.jpg" alt="error">
-				<div class="hover">
-					<a href="#" class="name">midnight memories</a>
-					<a href="#" class="author">One Direction</a>
-					<i class="play far fa-play-circle"></i>
-				</div>
+		<main id="musics" class="music" style="position: relative; min-height: 30vh;">
+			<div style="width: 3vw; height: 3vw; position: absolute; left: 48.5%; top: 1em;">
+				<img style="width: 100%; height: 100%;" src="img/loading.gif" alt="">
 			</div>
 		</main>
 
@@ -142,37 +81,37 @@
 	<div class="player">
 		<div class="track">
 			<div class="track-img">
-				<img src="img/track.jpg" alt="error">
+				<img id="img" src="img/ava.jpg" alt="error">
 			</div>
 			<div class="track__name">
-				<span class="name">Dark Horse</span>
-				<span class="author">Prism - Katy Perry</span>
+				<span id="name" class="name"></span>
+				<span id="author" class="author"></span>
 			</div>
 		</div>
 		<div class="controls">
-			<i class="fas fa-step-backward"></i>
-			<div style="position: relative; font-size: 2em; margin-right: .5625em; height: 1em; width: 1em;">
-				<i id="pause" class="far fa-pause-circle"></i>
-				<i id="play" class="far fa-play-circle"></i>
+			<i id="previous" class="fas fa-step-backward"></i>
+			<div id="play" style="position: relative; font-size: 2em; margin-right: .5625em; height: 1em; width: 1em;">
+				<i data-action="play" class="far fa-play-circle"></i>
 			</div>
-			<i class="fas fa-step-forward"></i>
-			<span class="time">2:26</span>
+			<i id="next" class="fas fa-step-forward"></i>
+			<span id="progress-left" class="time">0 : 0</span>
 			<div class="range timeline">
-				<input type="range" min="0" max="100" step="1"><span class="progress"></span>
+				<input id="timeline" type="range" min="0" max="100" step="1"><span style="width: 0;" class="progress"></span>
 			</div>
-			<span class="time">2:26</span>
-			<i id="repeat" class="fas fa-redo-alt"><span>1</span></i>
-			<i id="random" class="fas fa-random"></i>
+			<span id="progress-right" class="time">0 : 0</span>
+			<i id="repeat" data-state="0" class="fas fa-redo-alt"><span>1</span></i>
+			<i id="random" data-state="0" class="fas fa-random"></i>
 		</div>
 		<div class="volume">
 			<i class="fas fa-volume-up"></i>
 			<div class="range">
-				<input type="range" min="0" max="100" step="1"><span class="progress"></span>
+				<input id="volume" type="range" min="0" max="100" step="1" value="100"><span style="width: 100%;" class="progress"></span>
 			</div>
 		</div>
 	</div>
 
     <script src="js/libs.min.js"></script>
+		<script src="js/common.js"></script>
     <script src="js/scripts.js"></script>
 </body>
 

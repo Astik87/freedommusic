@@ -37,6 +37,7 @@ input[type=range]::-moz-range-thumb {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
     border-radius: 14px;
     -webkit-appearance: none;
     background-color: initial;
@@ -57,7 +58,10 @@ input[type=range]::-moz-range-thumb {
     height: 100%;
     background-color: red;
     border-radius: 10px;
-    z-index: 2; }
+    z-index: 2;
+    -webkit-transition: .1s all;
+    -o-transition: .1s all;
+    transition: .1s all; }
 
 /* Input */
 .group {
@@ -298,6 +302,11 @@ input[type=range]::-moz-range-thumb {
       height: 100%;
       -o-object-fit: cover;
          object-fit: cover; }
+    .music-item button {
+      background: bottom;
+      border: 0; }
+      .music-item button:focus {
+        outline: 0; }
     .music-item .hover {
       opacity: 0;
       position: absolute;
@@ -334,12 +343,12 @@ input[type=range]::-moz-range-thumb {
         left: 7%; }
         .music-item .hover .author:hover {
           color: #f23050; }
-      .music-item .hover .play {
+      .music-item .hover .play, .music-item .hover .pause {
         font-size: 3.5em;
         -webkit-transition: .2s all;
         -o-transition: .2s all;
         transition: .2s all; }
-        .music-item .hover .play:hover {
+        .music-item .hover .play:hover, .music-item .hover .pause:hover {
           color: #f23050; }
     .music-item:hover .hover {
       opacity: 1; }
@@ -474,15 +483,13 @@ li.playlists {
       transition: .2s color; }
       .player .controls i:hover {
         color: #f23050; }
-    .player .controls #pause, .player .controls #play {
+    .player .controls #play i {
       font-size: 1em;
       position: absolute;
       z-index: 1;
       -webkit-transition: .5s opacity, z-index;
       -o-transition: .5s opacity, z-index;
       transition: .5s opacity, z-index; }
-    .player .controls #pause {
-      opacity: 0; }
     .player .controls #repeat {
       margin-right: 3%;
       position: relative; }
@@ -500,9 +507,10 @@ li.playlists {
         display: none;
         color: #fff; }
     .player .controls .time {
-      margin: 0 2%; }
+      margin: 0 2%;
+      width: 5%; }
     .player .controls .timeline {
-      width: 70%;
+      width: 60%;
       height: 10px; }
       .player .controls .timeline input {
         width: 100%; }
@@ -527,10 +535,6 @@ li.playlists {
     .player .volume .range {
       width: 46%;
       height: 10px; }
-
-@media screen and (max-width: 1024px) {
-  .player i:hover, .music-item i:hover, .music-item a:hover {
-    color: #fff !important; } }
 
 @media screen and (max-width: 1450px) {
   .header__main .search {

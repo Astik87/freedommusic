@@ -36,6 +36,7 @@ input[type=range]::-moz-range-thumb
 		position: absolute
 		top: 0
 		left: 0
+		width: 100%
 		border-radius: 14px
 		-webkit-appearance: none
 		background-color: initial
@@ -59,6 +60,7 @@ input[type=range]::-moz-range-thumb
 		background-color: red
 		border-radius: 10px
 		z-index: 2
+		transition: .1s all
 
 /* Input */
 .group
@@ -245,6 +247,13 @@ input[type=range]::-moz-range-thumb
 			height: 100%
 			object-fit: cover
 
+		& button
+			background: bottom
+			border: 0
+
+			&:focus
+				outline: 0
+
 		& .hover
 			opacity: 0
 			position: absolute
@@ -275,7 +284,7 @@ input[type=range]::-moz-range-thumb
 				&:hover
 					color: #f23050
 
-			& .play
+			& .play, .pause
 				font-size: 3.5em
 				transition: .2s all
 
@@ -399,14 +408,11 @@ li.playlists
 			&:hover
 				color: #f23050
 
-		& #pause, & #play
+		& #play i
 			font-size: 1em
 			position: absolute
 			z-index: 1
 			transition: .5s opacity, z-index
-
-		& #pause
-			opacity: 0
 
 		& #repeat
 			margin-right: 3%
@@ -427,9 +433,10 @@ li.playlists
 
 		& .time
 			margin: 0 2%
+			width: 5%
 
 		& .timeline
-			width: 70%
+			width: 60%
 			height: 10px
 
 			& input
@@ -449,11 +456,7 @@ li.playlists
 		& .range
 			width: 46%
 			height: 10px
-
-@media screen and (max-width: 1024px)
-	.player i:hover, .music-item i:hover, .music-item a:hover
-		color: #fff!important
-
+			
 @media screen and (max-width: 1450px)
 
 	.header__main
